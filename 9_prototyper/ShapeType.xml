@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:/Program Files/rti_connext_dds-5.2.3/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<const name="SHAPETYPE_LIBRARY" type="string" value="&quot;ShapeType_Library&quot;"/>
+<const name="SHAPETYPE_PROFILE" type="string" value="&quot;ShapeType_Profile&quot;"/>
+<struct name= "ShapeType">
+  <member name="color" stringMaxLength="128" id="0" type="string" key="true"/>
+  <member name="x" id="1" type="long"/>
+  <member name="y" id="2" type="long"/>
+  <member name="shapesize" id="3" type="long"/>
+</struct>
+</types>
