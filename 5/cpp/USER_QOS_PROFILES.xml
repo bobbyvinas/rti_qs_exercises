@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 Description
-XML QoS Profile for ShapeType
+XML QoS Profile for ShapesType
 
 The QoS configuration of the DDS entities in the generated example is loaded
 from this file.
@@ -70,8 +70,8 @@ For more information about XML QoS Profiles see Chapter 17 in the
 RTI Connext user manual.
 -->
 <dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="C:/Program Files/rti_connext_dds-5.2.3/bin/../resource/schema/rti_dds_qos_profiles.xsd"
-     version="5.2.3">
+     xsi:noNamespaceSchemaLocation="/home/bobby/rti_connext_dds-5.3.0/resource/schema/rti_dds_qos_profiles.xsd"
+     version="5.3.0">
     <!-- QoS Library containing the QoS profile used in the generated example.
 
         A QoS library is a named set of QoS profiles.
@@ -83,42 +83,32 @@ RTI Connext user manual.
 
              A QoS profile groups a set of related QoS.
         -->
-        <qos_profile name="ShapeType_Profile">
+        <qos_profile name="ShapeType_Profile" base_name="BuiltinQosLibExp::Generic.StrictReliable" is_default_qos="true">
             <!-- QoS used to configure the data writer created in the example code -->
             <datawriter_qos>
                 <publication_name>
-                    <name>ShapeTypeDataWriter</name>
+                    <name>ShapesTypeDataWriter</name>
                 </publication_name>
-
-              <durability>
-                <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
-              </durability>
-
-              <history>
-                <kind>KEEP_LAST_HISTORY_QOS</kind>
-                <depth>100</depth>
-              </history>
             </datawriter_qos>
 
             <!-- QoS used to configure the data reader created in the example code -->
             <datareader_qos>
                 <subscription_name>
-                    <name>ShapeTypeDataReader</name>
+                    <name>ShapesTypeDataReader</name>
                 </subscription_name>
 
-              <!-- deadline>
-                <period>
-                  <sec>1</sec>
-                  <nanosec>0</nanosec>
-                </period>
-              </deadline>
-
-              <time_based_filter>
-                <minimum_separation>
-                  <sec>2</sec>
-                  <nanosec>0</nanosec>
-                </minimum_separation>
-              </time_based_filter -->
+                <!-- time_based_filter>
+                  <minimum_separation>
+                    <sec>2</sec>
+                    <nanosec>0</nanosec>
+                  </minimum_separation>
+                </time_based_filter -->
+                <!-- deadline>
+                  <period>
+                    <sec>1</sec>
+                    <nanosec>0</nanosec>
+                  </period>
+                </deadline -->
             </datareader_qos>
             <participant_qos>
                 <!--
@@ -127,8 +117,8 @@ RTI Connext user manual.
                 application from another when you're debugging.
                 -->
                 <participant_name>
-                    <name>ShapeTypeParticipant</name>
-                    <role_name>ShapeTypeParticipantRole</role_name>
+                    <name>ShapesTypeParticipant</name>
+                    <role_name>ShapesTypeParticipantRole</role_name>
                 </participant_name>
 
             </participant_qos>
