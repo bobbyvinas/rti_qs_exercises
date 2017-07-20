@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
-<!-- 
+<!--
 Description
 XML QoS Profile for ShapeType
 
-The QoS configuration of the DDS entities in the generated example is loaded 
+The QoS configuration of the DDS entities in the generated example is loaded
 from this file.
 
 This file is used only when it is in the current working directory or when the
 environment variable NDDS_QOS_PROFILES is defined and points to this file.
 
-The profile in this file inherits from the builtin QoS profile 
-BuiltinQosLib::Generic.StrictReliable. That profile, along with all of the 
-other built-in QoS profiles can be found in the 
-BuiltinProfiles.documentationONLY.xml file located in the 
+The profile in this file inherits from the builtin QoS profile
+BuiltinQosLib::Generic.StrictReliable. That profile, along with all of the
+other built-in QoS profiles can be found in the
+BuiltinProfiles.documentationONLY.xml file located in the
 $NDDSHOME/resource/xml/ directory.
 
-You may use any of these QoS configurations in your application simply by 
-referring to them by the name shown in the 
-BuiltinProfiles.documentationONLY.xml file and listed below: 
+You may use any of these QoS configurations in your application simply by
+referring to them by the name shown in the
+BuiltinProfiles.documentationONLY.xml file and listed below:
 
 * In library "BuiltinQosLib":
 ** Baseline
@@ -62,29 +62,29 @@ BuiltinProfiles.documentationONLY.xml file and listed below:
 You should not edit the file BuiltinProfiles.documentationONLY.xml directly.
 However, if you wish to modify any of the values in a built-in profile, the
 recommendation is to create a profile of your own and inherit from the built-in
-profile you wish to modify. The NDDS_QOS_PROFILES.example.xml file (contained in 
+profile you wish to modify. The NDDS_QOS_PROFILES.example.xml file (contained in
 the same directory as the BuiltinProfiles.documentationONLY.xml file) shows how
-to inherit from the built-in profiles. 
+to inherit from the built-in profiles.
 
-For more information about XML QoS Profiles see Chapter 17 in the 
+For more information about XML QoS Profiles see Chapter 17 in the
 RTI Connext user manual.
 -->
 <dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="C:/Program Files/rti_connext_dds-5.2.3/bin/../resource/schema/rti_dds_profiles.xsd"
-     version="5.2.3">
+     xsi:noNamespaceSchemaLocation="C:/Program Files/rti_connext_dds-5.3.0/bin/../resource/schema/rti_dds_profiles.xsd"
+     version="5.3.0">
    <!-- QoS Library containing the QoS profile used in the generated example.
 
         A QoS library is a named set of QoS profiles.
     -->
     <qos_library name="ShapeType_Library">
 
-        <!-- QoS profile used to configure reliable communication between the DataWriter 
+        <!-- QoS profile used to configure reliable communication between the DataWriter
              and DataReader created in the example code.
 
              A QoS profile groups a set of related QoS.
         -->
         <qos_profile name="ShapeType_Profile">
-            <!-- QoS used to configure the data writer created in the example code -->                
+            <!-- QoS used to configure the data writer created in the example code -->
             <datawriter_qos>
                 <publication_name>
                     <name>ShapeTypeDataWriter</name>
@@ -100,7 +100,7 @@ RTI Connext user manual.
               </history>
             </datawriter_qos>
 
-            <!-- QoS used to configure the data reader created in the example code -->                
+            <!-- QoS used to configure the data reader created in the example code -->
             <datareader_qos>
                 <subscription_name>
                     <name>ShapeTypeDataReader</name>
@@ -136,19 +136,19 @@ RTI Connext user manual.
 
     </qos_library>
 
-<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:/Program Files/rti_connext_dds-5.2.3/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
-<const name="SHAPETYPE_LIBRARY" type="string" value="&quot;ShapeType_Library&quot;"/>
-<const name="SHAPETYPE_PROFILE" type="string" value="&quot;ShapeType_Profile&quot;"/>
-<struct name= "ShapeType">
-  <member name="color" stringMaxLength="128" id="0" type="string" key="true"/>
-  <member name="x" id="1" type="long"/>
-  <member name="y" id="2" type="long"/>
-  <member name="shapesize" id="3" type="long"/>
-</struct>
-</types>
+    <types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/bobby/rti_connext_dds-5.3.0/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+    <const name="SHAPETYPE_LIBRARY" type="string" value="&quot;ShapeType_Library&quot;"/>
+    <const name="SHAPETYPE_PROFILE" type="string" value="&quot;ShapeType_Profile&quot;"/>
+    <struct name= "ShapeType">
+      <member name="color" stringMaxLength="128" id="0" type="string" key="true"/>
+      <member name="x" id="1" type="int32"/>
+      <member name="y" id="2" type="int32"/>
+      <member name="shapesize" id="3" type="int32"/>
+    </struct>
+    </types>
 
   <domain_library name="MyDomainLibrary">
-      <domain name="ShapesDomain" domain_id="8">
+      <domain name="ShapesDomain" domain_id="0">
 
         <register_type name="ShapeTypeType" kind="dynamicData" type_ref="ShapeType"/>
 
@@ -157,7 +157,7 @@ RTI Connext user manual.
       </domain>
   </domain_library>
 
-  <participant_library name="MyParticipantLibrary">
+  <domain_participant_library name="MyParticipantLibrary">
 
     <domain_participant name="PublicationParticipant"
                         domain_ref="MyDomainLibrary::ShapesDomain">
@@ -167,6 +167,6 @@ RTI Connext user manual.
       </publisher>
     </domain_participant>
 
-  </participant_library>
-  
+  </domain_participant_library>
+
 </dds>
